@@ -1,0 +1,95 @@
+/**
+ * ----------------------------------
+ * Table of Contents widget
+ * ----------------------------------
+ */
+.widget_toc {
+    display: none;
+    background-color: #fdfdfd;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+    border-right: solid 1px #eaeaea;
+    width: 100%;
+    font-size: 0.9rem;
+    line-height: 1.25rem;
+    border-left: solid 1px #eaeaea;
+    font-size: 0.75rem;
+    padding-bottom: 1.8rem;
+}
+
+.widget_toc:before {
+    content: "";
+    height: 4rem;
+    display: block;
+    line-height: 3.7rem;
+    font-size: 1.5rem;
+    padding-left: 30.4px;
+    color: #ccc;
+    border-bottom: solid 1px #eaeaea;
+}
+
+.widget_toc h3 {
+    padding: 0.75rem 0.5rem 0.5rem;
+    font-weight: 600;
+    background-color: #f7f7f7;
+    margin: 0;
+}
+
+.widget_toc ul {
+    border-bottom: solid 1px #eaeaea;
+}
+
+.widget_toc a {
+    font-size: 0.8rem;
+    padding: 0.45em 1em;
+    display: block;
+    border-top: solid 1px #eaeaea;
+    line-height: 1.3em;
+    color: #333;
+    text-decoration: none;
+}
+
+.widget_toc a:hover {
+    color: #d33a2c;
+    background-color: #fff;
+}
+
+.widget_toc .toc-header-H2 a {
+    font-weight: 600;
+}
+
+.widget_toc .toc-header-H3 a {
+    padding-left: 1.5rem;
+    font-weight: 600;
+}
+
+.widget_toc .toc-header-H4 a {
+    padding-left: 2rem;
+}
+
+.widget_toc .toc-header-H5 a {
+    padding-left: 2.5rem;
+}
+
+.widget_toc .toc-header-H6 a {
+    padding-left: 3rem;
+}
+
+.two-col-layout .widget_toc {
+    display: block;
+}
+
+@media (min-width: 40rem) {
+    .widget_toc {
+        left: auto;
+        position: fixed;
+        width: 27%;
+    }
+}
+
+@media (min-width: 57rem) {
+    .widget_toc {
+        width: 17rem;
+    }
+}
