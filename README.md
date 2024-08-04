@@ -1,10 +1,10 @@
 # WPH - Wordpress Theme
 
-The _Wordpress Helper_ development base theme. A streamlined theme for use on it's own or as a base for your own theme development.
+The _Wordpress Helper_ theme is a streamlined Wordpress theme for use on it's own or as a base for your own theme development.
 
 ## Installation
 
-Upload the `wph` theme directory and all its contents to the Wordpress theme directory `wp-content/themes`.
+Upload the `wph` directory and all its contents to the Wordpress theme directory `wp-content/themes`.
 
 Login to the Wordpress website as an admin and navigate to the _Appearance_ > _Themes_ page and activate the _WPH Theme_.
 
@@ -15,8 +15,7 @@ Login to the Wordpress website as an admin and navigate to the _Appearance_ > _T
 **index.php** - The required theme index file. No need to edit this file unless special route handling is needed.
 
 **functions.php** - Like most Wordpress themes this is where the heavy lifting takes place.
-WPH simplifies most tasks using the `$wph` class methods.
-Additional custom theme functions can be defined here as usual.
+WPH simplifies most tasks using the `$wph` class methods. Additional custom theme functions can be defined here as usual.
 
 
 
