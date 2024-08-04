@@ -1,6 +1,6 @@
 # WPH - Wordpress Theme
 
-The _Wordpress Helper_ development base theme. A streamlined simple base theme for use on it's own or as a base for your own theme development.
+The _Wordpress Helper_ development base theme. A streamlined theme for use on it's own or as a base for your own theme development.
 
 ## Installation
 
