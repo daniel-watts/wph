@@ -4,9 +4,9 @@ The _Wordpress Helper_ development base theme. A streamlined theme for use on it
 
 ## Installation
 
-Upload the `wph` theme directory and all its content to the Wordpress theme directory `wp-content/themes/wph`.
+Upload the `wph` theme directory and all its contents to the Wordpress theme directory `wp-content/themes`.
 
-Go to the Wordpress admin web interface and navigate to the _Appearance_ > _Themes_ page and activate the _WPH Theme_.
+Login to the Wordpress website as an admin and navigate to the _Appearance_ > _Themes_ page and activate the _WPH Theme_.
 
 ## WPH Files
 
