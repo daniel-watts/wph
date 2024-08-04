@@ -1,0 +1,426 @@
+::selection {
+    background: #d33a2c;
+    color: #fff;
+    text-shadow: none;
+}
+
+body {
+    position: relative;
+}
+
+body, input, textarea {
+    line-height: 1.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, segoe ui, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;
+    font-size: 1rem;
+}
+
+.text h1, .text h2, .text h3, .text h4, .text h5, .text h6 {
+    font-style: italic;
+    font-weight: 900;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+body,
+input,
+textarea,
+select,
+a,
+a:hover,
+a:focus,
+a:active {
+    color: #333;
+}
+
+a {
+    color: #d33a2c;
+}
+
+/**
+ * ----------------------------------
+ * Page Layout
+ * ----------------------------------
+ */
+
+.main-page-content {
+    padding: 1.5rem;
+    max-width: 46rem;
+    margin: 4rem auto 0;
+    /*margin: 10rem auto 0;*/
+}
+@media (min-width: 45rem) {
+    .main-page-content {
+        margin: 4rem auto 0;
+    }
+}
+
+/* Multiple columns. */
+.two-col-layout .page-content {
+    max-width: 85rem;
+    margin: 0 auto;
+}
+.two-col-layout .main-page-content {
+    max-width: 50rem;
+}
+@media (min-width: 45rem) {
+    .two-col-layout .main-page-content {
+        margin: 4rem auto 0 17.5rem;
+    }
+}
+@media (min-width: 60rem) {
+    .two-col-layout .main-page-content {
+        padding: 1.5rem 3.5rem 1.5rem 3rem;
+    }
+}
+@media (min-width: 85rem) {
+    .two-col-layout .main-page-content {
+        margin: 4rem auto 0;
+    }
+}
+
+/**
+ * ----------------------------------
+ * Site Header
+ * ----------------------------------
+ */
+
+.site-header {
+    width: 100%;
+    min-height: 3.5rem;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
+    position: fixed;
+    background-color: #23282d;
+    top: 0;
+    z-index: 2;
+    transition: top 0.25s ease;
+}
+
+.site-header.hide {
+    /*top: -3.5rem;*/
+    top: -7.5rem;
+}
+.admin-bar .site-header {
+    margin-top: 46px;
+}
+
+@media (min-width: 45rem) {
+    .site-header {
+        min-height: 4rem;
+    }
+    .admin-bar .site-header {
+        margin-top: 32px;
+    }
+    .site-header.hide {
+        top: -4rem;
+    }
+}
+
+#wpadminbar {
+     position: fixed; 
+}
+
+/**
+ * ----------------------------------
+ * Site Header Content
+ * ----------------------------------
+ */
+.site-title {
+    width: 100%;
+    text-align: center;
+}
+
+.site-title a {
+    color: #fff;
+    text-decoration: none;
+    /*line-height: 3.7rem;*/
+    line-height: 2rem;
+    font-size: 1.5rem;
+    display: block;
+    /*padding: 0 1.9rem;*/
+    padding: 0 1.9rem 0.4rem 1.9rem;
+}
+
+.site-nav label {
+    padding: 0;
+}
+
+/**
+ * ----------------------------------
+ * Header Search Form
+ * ----------------------------------
+ */
+.site-nav .search-form .screen-reader-text,
+.site-nav .search-submit {
+    position: absolute;
+    left: -100000px;
+}
+
+.site-nav .search-form {
+    width: calc(100% - 4rem);
+    float: left;
+    margin-bottom: 0.4rem;
+    padding-left: 0.4rem;
+    max-width: 32.3rem;
+}
+
+.site-nav .search-field {
+    padding: 0 1rem;
+    font-size: 1rem;
+    outline: none;
+    background-color: rgba(255,255,255,0.12);
+    color: #666;
+    border-radius: 0.2rem;
+    line-height: 3rem;
+    font-weight: 600;
+    height: auto;
+    border: none;
+}
+
+.site-nav .search-field.filled {
+    color: #eaeaea;
+}
+
+/**
+ * ----------------------------------
+ * Header Hamburger Menu Toggle
+ * ----------------------------------
+ */
+.site-nav-menu-toggle {
+    width: 3.3rem;
+    height: 3rem;
+    border: solid 1px #424242;
+    border-radius: 0.15rem;
+    float: right;
+    position: relative;
+    margin: 0 0.33rem 0 0;
+    cursor: pointer;
+}
+
+.site-nav-menu-toggle:hover {
+    border-color: #717171;
+}
+
+.site-nav-menu-toggle:before {
+    content: "";
+    position: absolute;
+    top: 0.79em;
+    left: 0.7rem;
+    width: 1.85rem;
+    height: 0.25em;
+    border-top: 0.775rem double #fff;
+    border-bottom: 0.275rem solid #fff;
+}
+
+/**
+ * ----------------------------------
+ * Main Menu
+ * ----------------------------------
+ */
+.site-nav-menu {
+    display: none;
+    width: 11rem;
+    position: absolute;
+    background-color: #ffffff;
+    right: 0.5rem;
+    top: 5.65rem;
+    border-radius: 0.2rem;
+    border: solid 1px #cbcbcb;
+    box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.15);
+}
+
+.site-nav-menu:before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fbfbfb;
+    position: absolute;
+    top: -10px;
+    right: 13px;
+}
+
+.site-nav-menu.open {
+    display: block;
+}
+
+.site-nav-menu ul {
+    margin: 0;
+    text-align: center;
+}
+
+.site-nav-menu li {
+    border-bottom: solid 1px #e5e5e5;
+}
+
+.site-nav-menu a {
+    color: #333;
+    line-height: 3rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    width: 100%;
+    display: block;
+}
+
+.site-nav-menu a:hover {
+    color: #000;
+}
+
+@media (min-width: 33rem) {
+    .site-title a {
+        padding-bottom: 0;
+        float: left;
+        line-height: 3.8rem;
+    }
+    .site-nav .search-form {
+        width: calc(100% - 15.75rem);
+        margin: 0.45rem 0;
+    }
+    .site-nav-menu {
+        top: 3.65rem; 
+    }
+    .site-nav-menu-toggle {
+        margin: 0.45rem 0.5rem 0 0;
+    }
+}
+
+/**
+ * ----------------------------------
+ * Post-specific styles
+ * ----------------------------------
+ */
+.entry-meta {
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+    color: #888;
+}
+
+/**
+ * ----------------------------------
+ * Search-specific styles
+ * ----------------------------------
+ */
+.archive-article a {
+    text-decoration: none;
+    color: #333;
+}
+
+/**
+ * ----------------------------------
+ * Table of Contents widget
+ * ----------------------------------
+ */
+.widget_toc {
+    display: none;
+    position: fixed;
+    background-color: #fdfdfd;
+    top: 0;
+    bottom: 0;
+    left: -17rem;
+    overflow: auto;
+    border-right: solid 1px #eaeaea;
+    width: 17rem;
+    font-size: 0.9rem;
+    line-height: 1.25rem;
+    border-left: solid 1px #eaeaea;
+    font-size: 0.75rem;
+    padding-bottom: 1.8rem;
+}
+
+.widget_toc:before {
+    content: "{dev_notes}";
+    height: 4rem;
+    display: block;
+    line-height: 3.7rem;
+    font-size: 1.5rem;
+    padding-left: 30.4px;
+    color: #ccc;
+    border-bottom: solid 1px #eaeaea;
+}
+
+.widget_toc h3 {
+    padding: 0.75rem 0.5rem 0.5rem;
+    font-weight: 600;
+    background-color: #f7f7f7;
+    margin: 0;
+}
+
+.widget_toc ul {
+    border-bottom: solid 1px #eaeaea;
+}
+
+.widget_toc a {
+    padding: 0.45em 1em;
+    display: block;
+    border-top: solid 1px #eaeaea;
+    line-height: 1.3em;
+    color: #333;
+    text-decoration: none;
+}
+
+.widget_toc a:hover {
+    color: #d33a2c;
+    background-color: #fff;
+}
+
+.widget_toc .toc-header-H2 a {
+    font-weight: 600;
+}
+
+.widget_toc .toc-header-H3 a {
+    padding-left: 1.5rem;
+}
+
+.widget_toc .toc-header-H4 a {
+    padding-left: 2rem;
+}
+
+.widget_toc .toc-header-H5 a {
+    padding-left: 2.5rem;
+}
+
+.widget_toc .toc-header-H6 a {
+    padding-left: 3rem;
+}
+
+.two-col-layout .widget_toc {
+    display: block;
+}
+
+@media (min-width: 45rem) {
+    .widget_toc {
+        left: auto;
+    }
+}
+
+/**
+ * ----------------------------------
+ * Footer (sticky)
+ * ----------------------------------
+ */
+.page-section {
+    flex-grow: 1;
+}
+
+.site-footer {
+    flex-shrink: 0;
+    z-index: 1;
+    background-color: #fff;
+    padding: 1rem;
+    border-top: solid 1px #eaeaea;
+    font-size: 0.6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.site-footer p {
+    margin: 0;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
