@@ -1,6 +1,6 @@
 
-/* Wattswork functions. */
-var wattswork = (function($){
+/* WHP JS functions. */
+var wph = (function($){
 
     /**
      * Initialize stuff
@@ -91,8 +91,6 @@ var wattswork = (function($){
 
     function table_of_contents_widget(source_container_id, toc_container_id)
     {
-        $('body').addClass('two-col-layout');
-
         // If the content element exists...
         if ($('#' + source_container_id).length) {
             
@@ -137,6 +135,6 @@ var wattswork = (function($){
 })(jQuery);
 
 jQuery( document ).ready(function() {
-    wattswork.init();
+    wph.init();
 });
 

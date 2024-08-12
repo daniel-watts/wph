@@ -3,6 +3,140 @@
 class wp_helpers {
 
     /**
+     * Main menu.
+     */
+    public $main_menu = false;
+    public function register_main_menu()
+    {
+        if ($this->main_menu) {
+            register_nav_menu('main-menu', __('Theme Main Menu', 'wph'));
+        }
+    }
+
+    /**
+     * Post Thumbnails
+     */
+    public $post_thumbnails = false;
+    public function register_post_thumbnails() {
+        if ($this->post_thumbnails) {
+            // Add thumbnail support to `post` and `page` type template files.
+            add_theme_support('post-thumbnails', ['post', 'page']);
+        }
+    }
+
+    /**
+     * Left Column.
+     */
+    public $column_left_layout = false;
+    public function column_left() {
+        if ($this->column_left_layout) {
+            get_template_part('content/column_left');
+        }
+    }
+
+    /**
+     * Left Column Widgets.
+     */
+    public $widgets_column_left = false;
+    public function column_left_widget_register() {
+
+        // Register Left Sidebar.
+        if ($this->widgets_column_left) {
+            register_sidebar(
+                array(
+                    'id' => 'left_column_widgets',
+                    'name' => __( 'Left Column Widgets' ),
+                    'description' => __( 'Widgets in this area will be shown on posts and pages that use the left-column layout.' ),
+                    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+                    'after_widget' => '</aside>',
+                    'before_title' => '<h3>',
+                    'after_title' => '</h3>'
+                )
+            );
+        }
+    }
+
+    /**
+     * Right Column.
+     */
+    public $column_right_layout = false;
+    public function column_right() {
+        if ($this->column_right_layout) {
+            get_template_part('content/column_right');
+        }
+    }
+
+    /**
+     * Right Column Widgets.
+     */
+    public $widgets_column_right = false;
+    public function column_right_widget_register() {
+
+        // Register Right Sidebar.
+        if ($this->widgets_column_right) {
+            register_sidebar(
+                array(
+                    'id' => 'right_column_widgets',
+                    'name' => __( 'Right Column Widgets' ),
+                    'description' => __( 'Widgets in this area will be shown on posts and pages that use the right-column layout.' ),
+                    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+                    'after_widget' => '</aside>',
+                    'before_title' => '<h3>',
+                    'after_title' => '</h3>'
+                )
+            );
+        }
+    }
+
+    /**
+     * Footer Widgets Menu.
+     */
+    public $footer_widgets_menu = false;
+    public function footer_widgets() {
+        if ($this->footer_widgets_menu) {
+            get_template_part('content/footer_widgets');
+        }
+    }
+
+    /**
+     * Wordpress archive pagination links.
+     */
+    public $use_pagination_links = false;
+    public function pagination_links() {
+        if ($this->use_pagination_links) {
+            global $wp_query; 
+            get_template_part('content/pagination_links');
+        }
+    }
+
+    /**
+     * Wordpress archive pagination bar.
+     */
+    public $use_pagination_bar = false;
+    public function pagination_bar() {
+        if ($this->use_pagination_bar) {
+            global $wp_query; 
+            get_template_part('content/pagination_bar');
+        }
+    }
+
+    /**
+     * Footer copyright.
+     */
+    public $footer_copyright = true;
+    public function copyright() {
+        if ($this->footer_copyright) {
+            get_template_part('content/copyright');
+        }
+    }
+
+    /**
+     * ------------------------------------
+     * WP Core Settings
+     * ------------------------------------
+     */
+
+    /**
      * Display HTML5 markup in search forms.
      */
     public $add_html5_search_form = false;
@@ -118,38 +252,44 @@ class wp_helpers {
      */
     public $add_menus_support = false;
 
-    /**
-     *
-     */
-    public $register_main_menu = false;
-
 
     public $remove_block_library = false;
 
 
+    /**
+     * ------------------------------------
+     * WP Hooks
+     * ------------------------------------
+     */
 
-    public function apply_settings()
-    {
-        add_action('init',              [$this, 'init']);
-        add_action('after_setup_theme', [$this, 'after_setup_theme']);
-        add_action('save_post',         [$this, 'save_post']);
-        add_action('add_meta_boxes',    [$this, 'add_meta_boxes']);
-        add_action('wp_print_styles',   [$this, 'wp_print_styles']);
-        add_action('wp_footer',         [$this, 'wp_footer']);
-
-        $this->remove_action();
-    }
-
+    /**
+     * WP 'init' hook.
+     */
     public function init()
     {
-        if ($this->register_main_menu) {            register_nav_menu('main-menu', __('Theme Main Menu', 'wph')); }
+        $this->register_main_menu();
     }
 
+    /**
+     * WP 'widgets_init' hook.
+     */
+    public function widgets_init()
+    {
+        $this->column_left_widget_register();
+        $this->column_right_widget_register();
+    }
+
+    /**
+     * WP 'add_filter' hook.
+     */
     public function add_filter()
     {
         if ($this->remove_oembed) {                 add_filter('embed_oembed_discover', '__return_false'); }
     }
 
+    /**
+     * WP 'remove_action' hook.
+     */
     public function remove_action()
     {
         if ($this->remove_wp_version_number) {      remove_action('wp_head', 'wp_generator'); }
@@ -174,30 +314,45 @@ class wp_helpers {
         if ($this->remove_canonical) {              remove_action('wp_head', 'rel_canonical'); }
     }
 
+    /**
+     * WP 'after_setup_theme' hook.
+     */
     public function after_setup_theme()
     {
         if ($this->add_html5_search_form) {         add_theme_support('html5', array('search-form')); }
         if ($this->add_menus_support) {             add_theme_support('menus'); }
+        $this->register_post_thumbnails();
     }
 
-    public function save_post()
-    {
-
-    }
-
-    public function add_meta_boxes()
-    {
-
-    }
-
+    /**
+     * WP 'wp_print_styles' hook.
+     */
     public function wp_print_styles()
     {
         if ($this->remove_block_library) {          wp_dequeue_style('wp-block-library'); }
     }
 
+    /**
+     * WP 'wp_footer' hook.
+     */
     public function wp_footer()
     {
         if ($this->remove_oembed) {                 wp_deregister_script('wp-embed'); }
+    }
+
+    /**
+     *  Run WP hooks.
+     *  This function MUST be called in order for WPH to work.
+     */
+    public function apply_settings()
+    {
+        add_action('init',              [$this, 'init']);
+        add_action('widgets_init',      [$this, 'widgets_init']);
+        add_action('after_setup_theme', [$this, 'after_setup_theme']);
+        add_action('wp_print_styles',   [$this, 'wp_print_styles']);
+        add_action('wp_footer',         [$this, 'wp_footer']);
+
+        $this->remove_action();
     }
 
 }

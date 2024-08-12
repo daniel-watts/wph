@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php global $wph; ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="<?php echo bloginfo('template_directory'); ?>/img/favicon.png">
  
     <style>
-    <?php // Included style sheets.
+    <?php // Included style sheets directly into the page.
         include( get_template_directory() . '/style.css'); // The required wp stylesheet.
         include( get_template_directory() . '/css/reset.css');
         include( get_template_directory() . '/css/elements.css');
@@ -21,13 +21,13 @@
     </style>
 
     <script>
-    <?php // Included JavaScripts.
+    <?php // Included JavaScripts directly into the page.
         include(get_template_directory() . '/js/jquery-2.1.4.min.js'); // jQuery.
     ?>
     </script>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class([$GLOBALS['wph_layout_template_css']]); ?>>
 
     <header class="site-header">
         <div class="site-title">
@@ -50,7 +50,7 @@
 
     <div class="page-section">
         <div class="page-content">
-            <aside id="toc-widget" class="widget_toc"></aside>
+            <?php $wph->column_left(); ?>
             <main id="page-content" class="main-page-content text">
                 <?php
                 get_template_part('content/title'); ?>

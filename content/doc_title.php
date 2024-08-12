@@ -10,8 +10,8 @@
         echo ' ' . $ww_titleSeporator . ' ' . $ww_site_description;
     }
     
-    if ($paged >= 2 || $page >= 2) {
-        echo ' ' . $ww_titleSeporator . ' ' . sprintf(__('Page %s'), max($paged, $page));
+    if ($paged >= 2) {
+        echo ' ' . $ww_titleSeporator . ' ' . __('Page %s');
     }
 
 ?></title>

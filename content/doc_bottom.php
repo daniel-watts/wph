@@ -1,14 +1,15 @@
+<?php global $wph; ?>
             </main>
+            <?php $wph->column_right(); ?>
         </div>
     </div>
 
+    <?php $wph->pagination_links(); ?>
+    <?php $wph->pagination_bar(); ?>
+
     <footer id="footer" class="site-footer">
-        <div id="footer-widgets" class="module">
-            <?php // dynamic_sidebar('footer'); // The `Footer` sidebar menu. ?>
-        </div>
-        <p class="copyright">
-            <span>&copy; <?php echo date( 'Y' ); ?> Daniel Watts</span>
-        </p>
+        <?php $wph->footer_widgets(); ?>
+        <?php $wph->copyright(); ?>
     </footer>
 
     <?php wp_footer(); // Required for WP hooks. ?>
@@ -22,7 +23,7 @@
         if (is_single() || is_page()) { // Not on search.
             $usetoc = get_post_meta($post->ID, 'use_toc', true );
             if ($usetoc == 'yes') {
-                echo 'wattswork.table_of_contents_widget(\'page-content\', \'toc-widget\');';
+                echo 'wph.table_of_contents_widget(\'page-content\', \'toc-widget\');';
             }
         } 
     ?>

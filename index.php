@@ -21,6 +21,30 @@
  * Returns `true` if the request is for the default WordPress homepage, it shows
  * the reverse chronological list of blog posts.
  */
+
+/**
+ * Columns Layout
+ */
+
+// Set the defualt layout type if it has not aleady been set.
+if (!isset($GLOBALS['wph_layout_template_type'])) {
+	$GLOBALS['wph_layout_template_type'] = 'single-column-layout';
+}
+
+// Set the initial layout template CSS.
+$GLOBALS['wph_layout_template_css'] = $GLOBALS['wph_layout_template_type'];
+
+// Check for the table of contents option (only for pages and posts).
+// If it exists, set the proper CSS.
+if (is_single() || is_page()) {
+	$usetoc = get_post_meta($post->ID, 'use_toc', true );
+	if ($usetoc == 'yes') {
+		if ($GLOBALS['wph_layout_template_type'] == 'single-column-layout') {
+			$GLOBALS['wph_layout_template_css'] = 'two-column-layout';
+		}
+	}
+}
+
 if     (is_front_page() && is_home())   { get_template_part('html_docs/page'); }
 elseif (is_front_page())                { get_template_part('html_docs/page'); }
 elseif (is_home())                      { get_template_part('html_docs/page'); }

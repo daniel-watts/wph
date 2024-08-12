@@ -48,33 +48,101 @@ a {
     margin: 4rem auto 0;
     /*margin: 10rem auto 0;*/
 }
+
+.page-content {
+    position: relative;
+}
+
 @media (min-width: 45rem) {
     .main-page-content {
         margin: 4rem auto 0;
     }
 }
 
-/* Multiple columns. */
-.two-col-layout .page-content {
+/* Columns. */
+.two-column-layout .page-content,
+.three-column-layout .page-content {
     max-width: 85rem;
     margin: 0 auto;
 }
-.two-col-layout .main-page-content {
+.two-column-layout .main-page-content,
+.three-column-layout .main-page-content {
     max-width: 50rem;
 }
 @media (min-width: 45rem) {
-    .two-col-layout .main-page-content {
+    .two-column-layout .main-page-content,
+    .three-column-layout .main-page-content {
         margin: 4rem auto 0 17.5rem;
     }
 }
 @media (min-width: 60rem) {
-    .two-col-layout .main-page-content {
-        padding: 1.5rem 3.5rem 1.5rem 3rem;
+    .two-column-layout .main-page-content,
+    .three-column-layout .main-page-content {
+        padding: 1.5rem 3rem;
     }
 }
 @media (min-width: 85rem) {
-    .two-col-layout .main-page-content {
+    .two-column-layout .main-page-content,
+    .three-column-layout .main-page-content {
         margin: 4rem auto 0;
+    }
+}
+
+/**
+ * ----------------------------------
+ * Left Column
+ * ----------------------------------
+ */
+
+.left-column:before {
+    content: " ";
+    height: 4rem;
+    display: block;
+}
+
+.left-column {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -17rem;
+    overflow: auto;
+    width: 17rem;
+    font-size: 0.9rem;
+    line-height: 1.25rem;
+    font-size: 0.75rem;
+    padding-bottom: 3.5rem;
+}
+
+@media (min-width: 45rem) {
+    .left-column {
+        display: block;
+        left: auto;
+    }
+}
+
+/**
+ * ----------------------------------
+ * Right Column
+ * ----------------------------------
+ */
+
+.right-column {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 67rem;
+    overflow: auto;
+    width: 17rem;
+    font-size: 0.9rem;
+    line-height: 1.25rem;
+    font-size: 0.75rem;
+}
+
+@media (min-width: 85rem) {
+    .right-column {
+        display: block;
     }
 }
 
@@ -312,31 +380,14 @@ a {
  * ----------------------------------
  */
 .widget_toc {
-    display: none;
-    position: fixed;
     background-color: #fdfdfd;
-    top: 0;
-    bottom: 0;
-    left: -17rem;
-    overflow: auto;
     border-right: solid 1px #eaeaea;
-    width: 17rem;
+    border-bottom: solid 1px #eaeaea;
+    width: 100%;
     font-size: 0.9rem;
     line-height: 1.25rem;
     border-left: solid 1px #eaeaea;
     font-size: 0.75rem;
-    padding-bottom: 1.8rem;
-}
-
-.widget_toc:before {
-    content: "{dev_notes}";
-    height: 4rem;
-    display: block;
-    line-height: 3.7rem;
-    font-size: 1.5rem;
-    padding-left: 30.4px;
-    color: #ccc;
-    border-bottom: solid 1px #eaeaea;
 }
 
 .widget_toc h3 {
@@ -344,6 +395,7 @@ a {
     font-weight: 600;
     background-color: #f7f7f7;
     margin: 0;
+    border-top: solid 1px #eaeaea;
 }
 
 .widget_toc ul {
@@ -384,16 +436,6 @@ a {
     padding-left: 3rem;
 }
 
-.two-col-layout .widget_toc {
-    display: block;
-}
-
-@media (min-width: 45rem) {
-    .widget_toc {
-        left: auto;
-    }
-}
-
 /**
  * ----------------------------------
  * Footer (sticky)
@@ -424,3 +466,53 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+/**
+ * ----------------------------------
+ * Pagination Links
+ * ----------------------------------
+ */
+
+nav.pagination-links {
+    max-width: 46rem;
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 3rem;
+    padding: 0 1.5rem;
+}
+
+nav.pagination-links .nav-previous {
+    float: left;
+}
+
+nav.pagination-links .nav-next {
+    float: right;
+}
+
+/**
+ * ----------------------------------
+ * Pagination Bar
+ * ----------------------------------
+ */
+nav.pagination-bar {
+    max-width: 46rem;
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 3rem;
+    padding: 0 1.5rem;
+}
+
+nav.pagination-bar .page-numbers {
+    display: inline-block;
+    height: 2rem;
+    border: solid 1px;
+    min-width: 2rem;
+    text-align: center;
+    line-height: 1.85rem;
+    text-decoration: none;
+    padding: 0 0.5rem;
+}
+
+
+
+
